@@ -54,7 +54,7 @@ vector<string> vcat(const vector<string>& top,
 
 // 수평 결합 
 vector<string> hcat(const vector<string>& left,
-					const vector<string>& right) {
+	const vector<string>& right) {
 	vector<string> ret;
 
 	// 두 문자 그림 사이에 공백 하나를 남김
@@ -86,7 +86,7 @@ vector<string> hcat(const vector<string>& left,
 }
 
 /*
-* 과제 
+* 과제
 * 1. split() 가져오기
 * 2. vcat() 사용하기
 * 3. hcat() 사용하기
@@ -98,7 +98,7 @@ int main() {
 	string s;
 
 	while (getline(cin, s)) {
-		vector<string> v = split(s); 
+		vector<string> v = split(s);
 		frame(v);
 	}
 	return 0;

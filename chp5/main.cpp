@@ -1,47 +1,52 @@
-// main.cpp
+// chp4ex0.cpp
 // 중간고사, 기말고사, 그리고 과제 점수 몇개를 받고
 // 마지막 평균 결과 점수를 계산하기.
 #include <algorithm>
-#include <fstream> //에런 (파일을 사용하기 위해)
 #include <ios>
 #include <iomanip>
-#include <iostream> // cin을 사용하기 위해
+#include <iostream> //cin cout을 사용하기 위해
 #include <stdexcept>
 #include <string>
 #include <vector>
 #include "grade.h"
 #include "Student_info.h"
+#include <fstream>//파일을 사용하기 위해
 
 using namespace std;
-// 입력 스트림에서 과제 점수를 읽어서 vector<double>에 넣음.
+
+
+
+
+
+// 중간시험 점수, 기말시험 점수, 과제 점수의 백터로
+// 학생의 종합 점수를 가함.
+// 이 함수는 인수를 복사하기 않고 median 함수가 해당 작업을 실행.
+
+
+
 
 int main() {
-    // 파일스트림 만들고 "txt"파일을 읽기
-    ifstream student_file("grades.txt");
+
 
     vector<Student_info> students;
     Student_info record;
     string::size_type maxlen = 0;
+    int i = 0;
 
     //학생 이름과 모든 점수를 읽어 저장하고
-    //가장 긴 이름을 찾음
-    while (read(student_file, record)) { //에런
-        //cin을 사용하면 직접 사용자 입력만 받을 수 있다
-        //student_file 은 ifstream이어서 파일 입력 받을 수 있다
-
-        maxlen = max(maxlen, record.name.size());
-        // Aaron: max(0, 5) = 5
-        students.push_back(record);
-    }
+    //가장 긴 이름ㅇ르 찾음
+    int maxlen;
+    Student_info s;
+    max(s.name.size(), maxlen);
 
     //학생 정보를 알파벳순으로 정렬
     sort(students.begin(), students.end(), compare);
     for (vector<Student_info>::size_type i = 0;
         i != students.size(); ++i) {
-        //이름과 오른쪽 공백을 포함하여 maxlen + 1개의
-        //문자를 출력
-        cout << students[i].name
-            << string(maxlen + 1 - students[i].name.size(), ' ');
+
+
+        //이름과 오른쪽 공백을 포함하여 maxlen + 1
+        cout << students[i].name << string(maxlen + 1 - students[i].name.size(), ' ');
     }
     // 종합 점수를 계산해 생성
     try {
@@ -55,7 +60,6 @@ int main() {
         cout << e.what();
 
     }
-
 
     return 0;
 } // main 끝
